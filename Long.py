@@ -20,3 +20,11 @@ date_1 = date(2014,7,2)
 date_2 = date(2014,7,11)
 num_days = date_2 - date_1
 print(num_days)
+
+# Write a Python program to get the difference between a given number and 17
+def difference(n):
+    if n <= 17:
+        return 17 - n
+    else:
+        print("Enter a smaller number")
+print(difference(18))
