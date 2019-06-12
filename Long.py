@@ -114,15 +114,18 @@ def test_data_structure():
         return char in all_vowels
     print(is_vowel("a"))
 
-# Write a Python program to solve (x + y) * (x + y)
-x = int(input("Enter value x: "))
-y = int(input("Enter value y: "))
-def equation_1(x, y):
-    return (x + y) * (x + y)
-print(equation_1(x, y))
+    # Write a Python program to solve (x + y) * (x + y)
+    x = int(input("Enter value x: "))
+    y = int(input("Enter value y: "))
+    def equation_1(x, y):
+        return (x + y) * (x + y)
+    print(equation_1(x, y))
 
-
-
+# Write a Python program that will accept the base and height of a triangle and compute the area
+b = int(input("Input the base: "))
+h = int(input("Input the height: "))
+area_triangle = (b*h)/2
+print("The area of the triangle is ", area_triangle)
 
 
 
