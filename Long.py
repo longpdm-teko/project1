@@ -127,24 +127,31 @@ def test_data_structure():
     area_triangle = (b*h)/2
     print("The area of the triangle is ", area_triangle)
 
-# Write a Python program to find the median among three given numbers
-print("Enter three different numbers!")
-x = int(input("Enter the first number: "))
-y = int(input("Enter the second number: "))
-z = int(input("Enter the third number: "))
-if y < x and x < z:
-    print("The median is ", x)
-elif z < x and x <y:
-    print("The median is ", x)
-elif x < y and y < z:
-    print("The median is ", y)
-elif z < y and y < x:
-    print("The median is ", y)
-elif x < z and z < y:
-    print("The median is ", z)
-elif y < z and z < x:
-    print("The median is ", z)
+    # Write a Python program to find the median among three given numbers
+    print("Enter three different numbers!")
+    x = int(input("Enter the first number: "))
+    y = int(input("Enter the second number: "))
+    z = int(input("Enter the third number: "))
+    if y < x and x < z:
+        print("The median is ", x)
+    elif z < x and x <y:
+        print("The median is ", x)
+    elif x < y and y < z:
+        print("The median is ", y)
+    elif z < y and y < x:
+        print("The median is ", y)
+    elif x < z and z < y:
+        print("The median is ", z)
+    elif y < z and z < x:
+        print("The median is ", z)
 
+# Write a Python function to check whether a number is in a given range
+def test_range(n):
+    if n in range(2,5):
+        print("%s is in the range" % str(n))
+    else:
+        print("%s is outside of range" % str(n))
+test_range(6)
 
 
 
