@@ -121,14 +121,29 @@ def test_data_structure():
         return (x + y) * (x + y)
     print(equation_1(x, y))
 
-# Write a Python program that will accept the base and height of a triangle and compute the area
-b = int(input("Input the base: "))
-h = int(input("Input the height: "))
-area_triangle = (b*h)/2
-print("The area of the triangle is ", area_triangle)
+    # Write a Python program that will accept the base and height of a triangle and compute the area
+    b = int(input("Input the base: "))
+    h = int(input("Input the height: "))
+    area_triangle = (b*h)/2
+    print("The area of the triangle is ", area_triangle)
 
-
-
+# Write a Python program to find the median among three given numbers
+print("Enter three different numbers!")
+x = int(input("Enter the first number: "))
+y = int(input("Enter the second number: "))
+z = int(input("Enter the third number: "))
+if y < x and x < z:
+    print("The median is ", x)
+elif z < x and x <y:
+    print("The median is ", x)
+elif x < y and y < z:
+    print("The median is ", y)
+elif z < y and y < x:
+    print("The median is ", y)
+elif x < z and z < y:
+    print("The median is ", z)
+elif y < z and z < x:
+    print("The median is ", z)
 
 
 
