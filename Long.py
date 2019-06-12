@@ -91,6 +91,19 @@ if num % 2 == 0:
 else:
     print("Odd number")
 
+# Write a Python function that takes a sequence of numbers and determines if all the numbers are different
+# from each other.
+def distinct_test(data):
+    if len(data) == len(set(data)):
+        return True
+    else:
+        return False
+
+
+print(distinct_test([4, 2, 5, 4, 3]))
+
+
+
 
 
 
