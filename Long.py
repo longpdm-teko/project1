@@ -108,12 +108,18 @@ def test_data_structure():
     else:
         print("Negative number")
 
-# Write a Python program to test whether a passed letter is a vowel or not
-def is_vowel(char):
-    all_vowels = "aeiou"
-    return char in all_vowels
-print(is_vowel("a"))
+    # Write a Python program to test whether a passed letter is a vowel or not
+    def is_vowel(char):
+        all_vowels = "aeiou"
+        return char in all_vowels
+    print(is_vowel("a"))
 
+# Write a Python program to solve (x + y) * (x + y)
+x = int(input("Enter value x: "))
+y = int(input("Enter value y: "))
+def equation_1(x, y):
+    return (x + y) * (x + y)
+print(equation_1(x, y))
 
 
 
