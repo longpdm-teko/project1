@@ -61,55 +61,61 @@ def test_data_structure():
     area = (b*h)/2
     print(area)
 
-# Write a Python program to print all even numbers from a given numbers list in the same order and stop
-# the printing if any numbers that come after 237 in the sequence
-numbers = [
-    386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345,
-    399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217,
-    815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717,
-    958,743, 527
-    ]
+    # Write a Python program to print all even numbers from a given numbers list in the same order and stop
+    # the printing if any numbers that come after 237 in the sequence
+    numbers = [
+        386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345,
+        399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217,
+        815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717,
+        958,743, 527
+        ]
+    for num in numbers:
+        if num == 237:
+           print(num)
+           break;
+        elif num % 2 == 0:
+           print(num)
 
-for num in numbers:
-    if num == 237:
-       print(num)
-       break;
-    elif num % 2 == 0:
-       print(num)
+    # Write a Python program to add two objects if both objects are an integer type
+    def add_numbers(a, b):
+        if not (isinstance(a,int) and isinstance(b,int)):
+            raise TypeError("Enter integers")
+        return a + b
+    print(add_numbers(4,6))
 
-# Write a Python program to add two objects if both objects are an integer type
-def add_numbers(a, b):
-    if not (isinstance(a,int) and isinstance(b,int)):
-        raise TypeError("Enter integers")
-    return a + b
-print(add_numbers(4,6))
-
-# Write a Python program to find whether a given number (accept from the user) is even or odd
-num = int(input("Enter a number: "))
-if num % 2 == 0:
-    print("Even number")
-else:
-    print("Odd number")
-
-# Write a Python function that takes a sequence of numbers and determines if all the numbers are different
-# from each other.
-def distinct_test(data):
-    if len(data) == len(set(data)):
-        return True
+    # Write a Python program to find whether a given number (accept from the user) is even or odd
+    num = int(input("Enter a number: "))
+    if num % 2 == 0:
+        print("Even number")
     else:
-        return False
+        print("Odd number")
+
+    # Write a Python function that takes a sequence of numbers and determines if all the numbers are different
+    # from each other.
+    def distinct_test(data):
+        if len(data) == len(set(data)):
+            return True
+        else:
+            return False
+    print(distinct_test([4, 2, 5, 4, 3]))
+
+    # Write a Python program to check if a number is positive, negative or zero
+    num = float(input("Enter a number: "))
+    if num > 0:
+        print("Positive number")
+    elif num == 0:
+        print("Zero")
+    else:
+        print("Negative number")
+
+# Write a Python program to test whether a passed letter is a vowel or not
+def is_vowel(char):
+    all_vowels = "aeiou"
+    return char in all_vowels
+print(is_vowel("a"))
 
 
-print(distinct_test([4, 2, 5, 4, 3]))
 
-# Write a Python program to check if a number is positive, negative or zero
-num = float(input("Enter a number: "))
-if num > 0:
-    print("Positive number")
-elif num == 0:
-    print("Zero")
-else:
-    print("Negative number")
 
 
 
