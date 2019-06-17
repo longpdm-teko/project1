@@ -145,13 +145,61 @@ def test_data_structure():
     elif y < z and z < x:
         print("The median is ", z)
 
-# Write a Python function to check whether a number is in a given range
-def test_range(n):
-    if n in range(2,5):
-        print("%s is in the range" % str(n))
-    else:
-        print("%s is outside of range" % str(n))
-test_range(6)
+    # Write a Python function to check whether a number is in a given range
+    def test_range(n):
+        if n in range(2,5):
+            print("%s is in the range" % str(n))
+        else:
+            print("%s is outside of range" % str(n))
+    test_range(6)
+
+# Write a Python function of students and returns a string with the letter grade that that student should receive
+lloyd = {
+  "name": "Lloyd",
+  "homework": [90.0, 97.0, 75.0, 92.0],
+  "quizzes": [88.0, 40.0, 94.0],
+  "tests": [75.0, 90.0]
+}
+alice = {
+  "name": "Alice",
+  "homework": [100.0, 92.0, 98.0, 100.0],
+  "quizzes": [82.0, 83.0, 91.0],
+  "tests": [89.0, 97.0]
+}
+tyler = {
+  "name": "Tyler",
+  "homework": [0.0, 87.0, 75.0, 22.0],
+  "quizzes": [0.0, 75.0, 78.0],
+  "tests": [100.0, 100.0]
+}
+students = [lloyd, alice, tyler]
+
+def average(numbers):
+  total = sum(numbers)
+  total = float(total)
+  return total / len(numbers)
+
+def get_average(students):
+  for student in students:
+    homework = average(students["homework"])
+    quizzes = average(students["quizzes"])
+    tests = average(students["tests"])
+    score = (homework / 100) * 10 + (quizzes / 100) * 30 +\
+    (tests / 100) * 60
+    return score
+
+def get_letter_grade(score):
+  if score >= 90:
+    return "A"
+  elif 80 <= score < 90:
+    return "B"
+  elif 70 <= score < 80:
+    return "C"
+  elif 60 <= score < 70:
+    return "D"
+  else:
+    return "F"
+print(get_letter_grade(get_average(lloyd)))
 
 
 
