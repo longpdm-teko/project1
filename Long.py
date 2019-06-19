@@ -209,7 +209,6 @@ def test_data_structure():
     print(get_letter_grade(get_average(lloyd)))
 
 
-def buy_a_car():
     print("Cargurus.com")
     print("")
     car_list = {
@@ -226,42 +225,143 @@ def buy_a_car():
     }
 
     for car in car_list:
-        print("Model: %s" % car)
+        car_attributes = {
+            car_list[car][0], car_list[car][1], car_list[car][2], car_list[car][3], car_list[car][4], car_list[car][5],
+            car_list[car][6]
+        }
         year = car_list[car][0]
-        if year >= 2009:
-            print("Year: %s" % year)
-        else:
-            print("Choose newer generation")
         mileage = car_list[car][1]
-        if mileage <= 100000:
-            print("Mileage: %s miles" % mileage)
-        else:
-            print("Choose less mileage car")
         title = car_list[car][2]
-        if title == "clean":
-            print("Title: %s" % title)
-        else:
-            print("Damaged or Not Qualified")
         price = car_list[car][3]
-        if price <= 12000:
-            print("Price: $%s" % price)
-        else:
-            print("Exceed budget")
         distance = car_list[car][4]
-        print("Distance from Aunt Vy: %s miles" % distance)
         color = car_list[car][5]
-        print("Color: %s" % color)
         owners = car_list[car][6]
-        print("Owners: %s" % owners)
-        print("")
 
 
-class RankCar:
-    def __init__(self, year, mileage, title, price, distance, color, owners):
+        def print_car():
+            print("Model: %s" % car)
+
+            if year >= 2009:
+                print("Year: %s" % year)
+            else:
+                print("Choose newer generation")
+
+            if mileage <= 100000:
+                print("Mileage: %s miles" % mileage)
+            else:
+                print("Choose less mileage car")
+
+            if title == "clean":
+                print("Title: %s" % title)
+            else:
+                print("Damaged or Not Qualified")
+
+            if price <= 12000:
+                print("Price: $%s" % price)
+            else:
+                print("Exceed budget")
+
+            print("Distance from Aunt Vy: %s miles" % distance)
+
+            print("Color: %s" % color)
+
+            print("Owners: %s" % owners)
+
+            print("")
+
+
+class Car:
+    def __init__(self, model, year, mileage, title, price, distance, color, owners):
+        self.model = model
         self.year = year
         self.mileage = mileage
-        self.title = title
+        self.title = title if title == "clean" else "damaged car"
         self.price = price
         self.distance = distance
         self.color = color
         self.owners = owners
+
+    def __repr__(self):
+        return "Model: {0}, " \
+               "Year: {1}, " \
+               "Mileage: {2} miles, " \
+               "Title: {3}, " \
+               "Price: $ {4}, " \
+               "Distance from Aunt Tien: {5} miles, " \
+               "Color: {6}, " \
+               "Owners: {7} /////".format(self.model, self.year, self.mileage, self.title,
+                                          self.price, self.distance, self.color, self.owners)
+
+
+class Color:
+    def __init__(self, name, seq):
+        self.name = name
+        self.seq = seq
+
+    def __repr__(self):
+        return "{}".format(self.name)
+
+
+_color1 = Color('black', 0)
+_color2 = Color('silver', 0)
+_color3 = Color('gray', 0)
+_color4 = Color('gold', 1)
+_color5 = Color('white', 1)
+_color6 = Color('cream', 1)
+
+_list = [
+    Car("Toyota Camry SE", 2015, 92441, "clean", 10991, 5, _color3, 1),
+    Car("Toyota Camry SE", 2014, 78150, "clean", 10800, 6, _color1, 2),
+    Car("Toyota Camry Hybrid LE", 2015, 44656, "clean", 13791, 10, _color3, 1),
+    Car("Toyota Camry LE", 2016, 88648, "clean", 11650, 12, _color1, 2),
+    Car("Toyota Camry SE", 2016, 79857, "clean", 11993, 20, _color2, 1),
+    Car("Toyota Camry XLE V6", 2015, 70533, "clean", 12995, 39, _color2, 2),
+    Car("Toyota Camry LE", 2015, 58195, "clean", 12495, 3, _color4, 2),
+    Car("Toyota Camry LE", 2015, 86834, "clean", 10691, 16, _color5, 2),
+    Car("Toyota Camry LE", 2017, 96541, "clean", 11359, 18, _color6, 2),
+    Car("Toyota Camry LE", 2014, 33452, "clean", 12998, 22, _color6, 2),
+]
+
+for i in range(len(_list) - 1, 0, -1):
+    for j in range(i):
+        if _list[j].owners > _list[j + 1].owners:
+            a = _list[j]
+            _list[j] = _list[j + 1]
+            _list[j + 1] = a
+
+for i in range(len(_list) - 1, 0, -1):
+    for j in range(i):
+        if _list[j].distance > _list[j + 1].distance:
+            a = _list[j]
+            _list[j] = _list[j + 1]
+            _list[j + 1] = a
+
+for i in range(len(_list) - 1, 0, -1):
+    for j in range(i):
+        if _list[j].year < _list[j + 1].year:
+            a = _list[j]
+            _list[j] = _list[j + 1]
+            _list[j + 1] = a
+
+for i in range(len(_list) - 1, 0, -1):
+    for j in range(i):
+        if _list[j].price > _list[j + 1].price:
+            a = _list[j]
+            _list[j] = _list[j + 1]
+            _list[j + 1] = a
+
+for i in range(len(_list) - 1, 0, -1):
+    for j in range(i):
+        if _list[j].mileage > _list[j + 1].mileage:
+            a = _list[j]
+            _list[j] = _list[j + 1]
+            _list[j + 1] = a
+
+for i in range(len(_list) - 1, 0, -1):
+    for j in range(i):
+        if _list[j].color.seq > _list[j + 1].color.seq:
+            a = _list[j]
+            _list[j] = _list[j + 1]
+            _list[j + 1] = a
+
+print(_list)
