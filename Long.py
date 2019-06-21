@@ -364,4 +364,12 @@ for i in range(len(_list) - 1, 0, -1):
             _list[j] = _list[j + 1]
             _list[j + 1] = a
 
-print(_list)
+num = 1
+for i in range(0, len(_list)):
+    print("%s)" % num, _list[i])
+    num = num + 1
+    if num <= len(_list):
+        continue
+    else:
+        break
+
