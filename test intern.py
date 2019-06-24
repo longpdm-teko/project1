@@ -110,7 +110,6 @@ _list_nvsx = [
     Nvsx("Phung Quang E", 2006, 35)
 ]
 
-
 num = 1
 print("Nhan vien san xuat: ")
 for i in range(0, len(_list_nvsx)):
@@ -120,6 +119,15 @@ for i in range(0, len(_list_nvsx)):
         continue
     else:
         break
+
+a = 0
+for i in _list_nvsx:
+    j = i.luong_tong(i.pay_check(i.products_made), i.phu_cap(i.count_years(now.year, i.year_of_entry)))
+    while j != a:
+        a += j
+    else:
+        break
+print("Luong tong cong mot thang cua NVSX: ", a)
 
 print("")
 
@@ -141,7 +149,15 @@ for i in range(0, len(_list_nvvp)):
     else:
         break
 
-pay_check_nvsx = 0
-for i in _list_nvsx:
-    pay_check_nvsx = i.luong_tong(i.pay_check(i.products_made), i.phu_cap(i.count_years(now.year, i.year_of_entry)))
-    
+b = 0
+for i in _list_nvvp:
+    j = i.luong_tong(i.pay_check(i.salary, i.off_days), i.phu_cap(i.count_years(now.year, i.year_of_entry)))
+    while j != b:
+        b += j
+    else:
+        break
+print("Luong tong cong mot thang cua NVVP: ", b)
+
+print("")
+
+print("Tong so tien cong ty phai tra cho nhan vien moi thang: ", a + b)
