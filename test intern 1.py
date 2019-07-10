@@ -132,10 +132,10 @@ d3 = Chitietdon("CT003", 73, 3000)
 d4 = Chitietdon("CT004", 73, 4000)
 
 p1 = Chitietphuc("B1", [d1, d2])
-p2 = Chitietphuc("B1", [d3, p1])
-p = Chitietphuc("B1", [p2, d4])
+p2 = Chitietphuc("B2", [d3, p1])
+p3 = Chitietphuc("B3", [p2, d4])
 
-print(p)
+print(p3)
 
 # n = Chitietphuc("B1", [, Chitietphuc("PT2000", [Chitietdon("CT005", 47, 94000),
 #                                                                               Chitietdon("CT006", 85, 35000)])])

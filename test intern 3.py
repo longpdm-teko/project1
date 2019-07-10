@@ -58,7 +58,7 @@ class LopHoc:
     def get_avg_age(self):
         total = 0
         for item in self.list_sinh_vien:
-            total += item.get_age() # => total = total + item
+            total += item.get_age()  # => total = total + item
         total /= len(self.list_sinh_vien)  # => total = total / item
         return total
 

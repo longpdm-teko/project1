@@ -209,65 +209,65 @@ def test_data_structure():
     print(get_letter_grade(get_average(lloyd)))
 
 
-    print("Cargurus.com")
-    print("")
-    car_list = {
-        "Toyota Camry SE #078647": [2015, 92441, "clean", 10991, 5, "gray", 1],
-        "Toyota Camry SE #FACEBOOK": [2014, 78150, "clean", 10800, 6, "black", 2],
-        "Toyota Camry Hybrid LE #FU156820": [2015, 44656, "clean", 13791, 10, "gray", 1],
-        "Toyota Camry LE #262895": [2016, 88648, "clean", 11650, 12, "black", 2],
-        "Toyota Camry SE #GU198230": [2016, 79857, "clean", 11993, 20, "silver", 1],
-        "Toyota Camry XLE V6 #946711": [2015, 70533, "clean", 12995, 39, "silver", 2],
-        "Toyota Camry LE #FR478378": [2015, 58195, "clean", 12495, 3, "gold", 2],
-        "Toyota Camry LE #P887184": [2015, 86834, "clean", 10691, 16, "white", 2],
-        "Toyota Camry LE #K24969A": [2017, 96541, "clean", 11359, 18, "cream", 2],
-        "Toyota Camry LE #31086": [2014, 33452, "clean", 12998, 22, "cream", 2]
+print("Cargurus.com")
+print("")
+car_list = {
+    "Toyota Camry SE #078647": [2015, 92441, "clean", 10991, 5, "gray", 1],
+    "Toyota Camry SE #FACEBOOK": [2014, 78150, "clean", 10800, 6, "black", 2],
+    "Toyota Camry Hybrid LE #FU156820": [2015, 44656, "clean", 13791, 10, "gray", 1],
+    "Toyota Camry LE #262895": [2016, 88648, "clean", 11650, 12, "black", 2],
+    "Toyota Camry SE #GU198230": [2016, 79857, "clean", 11993, 20, "silver", 1],
+    "Toyota Camry XLE V6 #946711": [2015, 70533, "clean", 12995, 39, "silver", 2],
+    "Toyota Camry LE #FR478378": [2015, 58195, "clean", 12495, 3, "gold", 2],
+    "Toyota Camry LE #P887184": [2015, 86834, "clean", 10691, 16, "white", 2],
+    "Toyota Camry LE #K24969A": [2017, 96541, "clean", 11359, 18, "cream", 2],
+    "Toyota Camry LE #31086": [2014, 33452, "clean", 12998, 22, "cream", 2]
+}
+
+for car in car_list:
+    car_attributes = {
+        car_list[car][0], car_list[car][1], car_list[car][2], car_list[car][3], car_list[car][4], car_list[car][5],
+        car_list[car][6]
     }
-
-    for car in car_list:
-        car_attributes = {
-            car_list[car][0], car_list[car][1], car_list[car][2], car_list[car][3], car_list[car][4], car_list[car][5],
-            car_list[car][6]
-        }
-        year = car_list[car][0]
-        mileage = car_list[car][1]
-        title = car_list[car][2]
-        price = car_list[car][3]
-        distance = car_list[car][4]
-        color = car_list[car][5]
-        owners = car_list[car][6]
+    year = car_list[car][0]
+    mileage = car_list[car][1]
+    title = car_list[car][2]
+    price = car_list[car][3]
+    distance = car_list[car][4]
+    color = car_list[car][5]
+    owners = car_list[car][6]
 
 
-        def print_car():
-            print("Model: %s" % car)
+    def print_car():
+        print("Model: %s" % car)
 
-            if year >= 2009:
-                print("Year: %s" % year)
-            else:
-                print("Choose newer generation")
+        if year >= 2009:
+            print("Year: %s" % year)
+        else:
+            print("Choose newer generation")
 
-            if mileage <= 100000:
-                print("Mileage: %s miles" % mileage)
-            else:
-                print("Choose less mileage car")
+        if mileage <= 100000:
+            print("Mileage: %s miles" % mileage)
+        else:
+            print("Choose less mileage car")
 
-            if title == "clean":
-                print("Title: %s" % title)
-            else:
-                print("Damaged or Not Qualified")
+        if title == "clean":
+            print("Title: %s" % title)
+        else:
+            print("Damaged or Not Qualified")
 
-            if price <= 12000:
-                print("Price: $%s" % price)
-            else:
-                print("Exceed budget")
+        if price <= 12000:
+            print("Price: $%s" % price)
+        else:
+            print("Exceed budget")
 
-            print("Distance from Aunt Vy: %s miles" % distance)
+        print("Distance from Aunt Vy: %s miles" % distance)
 
-            print("Color: %s" % color)
+        print("Color: %s" % color)
 
-            print("Owners: %s" % owners)
+        print("Owners: %s" % owners)
 
-            print("")
+        print("")
 
 
 class Car:
