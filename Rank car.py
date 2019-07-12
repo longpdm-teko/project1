@@ -9,6 +9,9 @@ class Car:
         self.color = color
         self.owners = owners
 
+    def __get_title(self):
+        return self.title
+
     def __repr__(self):
         return "Model: {0}, " \
                "Year: {1}, " \
@@ -19,6 +22,7 @@ class Car:
                "Color: {6}, " \
                "Owners: {7} /////".format(self.model, self.year, self.mileage, self.title,
                                           self.price, self.distance, self.color, self.owners)
+
 
 
 class Title:
@@ -57,12 +61,15 @@ class Color:
 
 _condition1 = Title("clean", 0)
 _condition2 = Title("damaged", 1)
+
 _owners1 = Owners(1)
 _owners2 = Owners(2)
+
 _year1 = Year(2014)
 _year2 = Year(2015)
 _year3 = Year(2016)
 _year4 = Year(2017)
+
 _color1 = Color('black', 0)
 _color2 = Color('silver', 0)
 _color3 = Color('gray', 0)
@@ -134,5 +141,6 @@ for i in range(0, len(_list)):
         continue
     else:
         break
+
 
 

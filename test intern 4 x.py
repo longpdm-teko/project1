@@ -1,3 +1,4 @@
+
 class Author:
     def __init__(self, author_id, first_name, last_name, email, phone, address):
         self.author_id = author_id
@@ -7,42 +8,44 @@ class Author:
         self.phone = phone
         self.address = address
 
-    def get_author_id(self):
-        return self.author_id
-
     def __repr__(self):
         return "Author ID: {0}, First name: {1}, Last name: {2}, Email: {3}, Phone: {4}, Address: {5}/////" \
             .format(self.author_id, self.first_name, self.last_name, self.email, self.phone, self.address)
 
 
 class Book:
-    def __init__(self, book_id, ibsn, publish_year, genres, views, votes, downloads, status, created_date,
-                 uploaded_date, list_authors=[]):
+    def __init__(self, book_id, title, ibsn, publish_year, genres, views, votes, downloads, status, created_date,
+                 uploaded_date,
+                 list_authors=[]):
         self.book_id = book_id
+        self.status = status
+        self.created_date = created_date
+        self.uploaded_date = uploaded_date
+        self.title = title
         self.ibsn = ibsn
         self.publish_year = publish_year
+        self.list_authors = list_authors
         self.genres = genres
         self.views = views
         self.votes = votes
         self.downloads = downloads
-        self.status = status
-        self.created_date = created_date
-        self.uploaded_date = uploaded_date
-        self.list_authors = list_authors
 
-    def add_items(self, item):
+    def add_authors(self, item):
         if not self.list_authors:
             self.list_authors = []
         self.list_authors.append(item)
 
-    def get_book_id(self):
-        return self.book_id
-
     def __repr__(self):
-        return "Book ID: {0}, IBSN: {1}, Publish year: {2}, Genres: {3}, Views: {4}, Votes: {5}, Downloads: {6}, " \
+        return "Title: {0}, IBSN: {1}, Publish year: {2}, Genres: {3}, Views: {4}, Votes: {5}, Downloads: {6}, " \
                "Status: {7}, Created date: {8}, Uploaded date: {9}, Authors: {10}" \
-                .format(self.book_id, self.ibsn, self.publish_year, self.genres, self.views, self.votes, self.downloads,
-                        self.status, self.created_date, self.uploaded_date, self.list_authors)
+            .format(self.title, self.ibsn, self.publish_year, self.genres, self.views, self.votes, self.downloads,
+                    self.status, self.created_date, self.uploaded_date, self.list_authors)
+
+
+class BookAuthorMapping:
+    def __init__(self, book_id, author_id):
+        self.book_id = book_id
+        self.author_id = author_id
 
 
 class Genres:
@@ -84,46 +87,17 @@ _list_books = [
     Book("B5", "HI93", 2006, _genres5, 37254, 23, 7263, _status1, "29/04/2011", "06/02/2012", [_author1, _author2])
 ]
 
-
-def get_books_of_author(item):
-    for a in _list_books:
-        for i in a.list_authors:
-            if i == Author.get_author_id(item):
-                return
+_mapping = [
+    BookAuthorMapping("A1", "B1")
+]
 
 
-def sort_publish_year():
-    for i in range(len(_list_books) - 1, 0, -1):
-        for j in range(i):
-            if _list_books[j].publish_year > _list_books[j + 1].publish_year:
-                a = _list_books[j]
-                _list_books[j] = _list_books[j + 1]
-                _list_books[j + 1] = a
-
-    num = 1
-    for i in range(0, len(_list_books)):
-        print("%s)" % num, _list_books[i])
-        num = num + 1
-        if num <= len(_list_books):
-            continue
-        else:
-            break
+def get_books_of_author(author_id):
+    book_ids = []
+    for m in _mapping:
+        if m.author_id == author_id:
+            book_ids.append(m.book_id)
+            return book_ids
 
 
-def get_top_downloads():
-    for i in range(len(_list_books) - 1, 0, -1):
-        for j in range(i):
-            if _list_books[j].downloads < _list_books[j + 1].downloads:
-                a = _list_books[j]
-                _list_books[j] = _list_books[j + 1]
-                _list_books[j + 1] = a
-
-    num = 1
-    for i in range(0, 5):
-        print("%s)" % num, _list_books[i])
-        num = num + 1
-        if num <= len(_list_books):
-            continue
-        else:
-            break
-
+print(get_books_of_author(_author1))
