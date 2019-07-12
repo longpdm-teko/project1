@@ -9,7 +9,7 @@ class ChiTiet:
         pass
 
     def __repr__(self):
-        return "{0}, price: {1}, weight: {2} ".format(self.name, self.get_price(), self.get_weight())
+        return "name: {0}, price: {1}, weight: {2} ".format(self.name, self.get_price(), self.get_weight())
 
 
 class Chitietdon(ChiTiet):
