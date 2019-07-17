@@ -42,7 +42,7 @@ class Car:
     def get_gas_per_mile(self):
         pass
 
-    def start_time(self):
+    def get_start_time(self):
         return "Car start time depends on their model"
 
 
@@ -54,7 +54,7 @@ class Toyota(Car):
     def get_gas_per_mile(self):
         return (self.mileage / 100000) * 5
 
-    def start_time(self):
+    def get_start_time(self):
         return "Toyota car starts in 3 seconds"
 
     def __repr__(self):
@@ -65,9 +65,12 @@ class Toyota(Car):
                "Price: $ {4}, " \
                "Distance from home: {5} miles, " \
                "Color: {6}, " \
-               "Ownership: {7}, "\
-               "Hot chairs: {8}".format(self.model, self.year, self.mileage, self.title, self.price, self.distance,
-                                        self.color, self.get_ownership(), self.hot_chairs)
+               "Ownership: {7}, " \
+               "Hot chairs: {8}, " \
+               "Gas per mile: {9}, " \
+               "Start time: {10}".format(self.model, self.year, self.mileage, self.title, self.price, self.distance,
+                                         self.color, self.get_ownership(), self.hot_chairs, self.get_gas_per_mile(),
+                                         self.get_start_time())
 
 
 class Ford(Car):
@@ -78,7 +81,7 @@ class Ford(Car):
     def get_gas_per_mile(self):
         return (self.mileage / 80000) * 6
 
-    def start_time(self):
+    def get_start_time(self):
         return "Ford car starts in 2 seconds"
 
     def __repr__(self):
@@ -89,9 +92,12 @@ class Ford(Car):
                "Price: $ {4}, " \
                "Distance from home: {5} miles, " \
                "Color: {6}, " \
-               "Ownership: {7}, "\
-               "Black lights: {8}".format(self.model, self.year, self.mileage, self.title, self.price, self.distance,
-                                          self.color, self.get_ownership(), self.black_lights)
+               "Ownership: {7}, " \
+               "Black lights: {8}, " \
+               "Gas per mile: {9}, " \
+               "Start time: {10}".format(self.model, self.year, self.mileage, self.title, self.price, self.distance,
+                                         self.color, self.get_ownership(), self.black_lights, self.get_gas_per_mile(),
+                                         self.get_start_time())
 
 
 class Title:
@@ -146,7 +152,52 @@ _car8 = Ford("F4", _year2, 86834, _condition2, 10691, 16, _color5, 2, 4)
 _car9 = Toyota("T5", _year4, 96541, _condition1, 11359, 18, _color6, 4, 3)
 _car10 = Ford("F5", _year1, 33452, _condition2, 12998, 22, _color6, 5, 4)
 
-_list = [_car1, _car2, _car3, _car4, _car5, _car6, _car7, _car8, _car9, _car10]
+
+def user_input():
+    _input_brand = input("Enter Brand: ").upper()
+    if _input_brand == "Toyota".upper():
+        _input_model = input("Enter Model: ")
+        _input_year = int(input("Enter Year: "))
+        _input_mileage = int(input("Enter Mileage: "))
+        _input_title = input("Enter Title: ")
+        _input_price = int(input("Enter Price: "))
+        _input_distance = int(input("Enter Distance from home: "))
+        _input_color = input("Enter Color: ")
+        _input_owners = int(input("Enter Owners: "))
+        _input_hot_chairs = int(input("Enter Hot Chairs: "))
+        _Toyota_input = Toyota(_input_model, _input_year, _input_mileage, _input_title, _input_price, _input_distance,
+                               _input_color, _input_owners, _input_hot_chairs)
+        return _Toyota_input
+    elif _input_brand == "Ford".upper():
+        _input_model = input("Enter Model: ")
+        _input_year = int(input("Enter Year: "))
+        _input_mileage = int(input("Enter Mileage: "))
+        _input_title = input("Enter Title: ")
+        _input_price = int(input("Enter Price: "))
+        _input_distance = int(input("Enter Distance from home: "))
+        _input_color = input("Enter Color: ")
+        _input_owners = int(input("Enter Owners: "))
+        _input_black_lights = int(input("Enter Black Lights: "))
+        _Ford_input = Ford(_input_model, _input_year, _input_mileage, _input_title, _input_price, _input_distance,
+                           _input_color, _input_owners, _input_black_lights)
+        return _Ford_input
+    else:
+        print("Enter different brand")
+        user_input()
+
+
+def print_cars():
+    _list_cars = []
+    while True:
+        _input = input("Do you want to put in some cars? Y/N : ").upper()
+        if _input == "Y".upper():
+            _car = user_input()
+            _list_cars.append(_car)
+        elif _input == "N".upper():
+            break
+        else:
+            print("Type something else")
+    print(_list_cars)
 
 
 def print_list():
@@ -219,3 +270,5 @@ def sort_distance():
                 _list[j + 1] = a
     print_list()
 
+
+print_cars()
