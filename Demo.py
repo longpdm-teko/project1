@@ -182,8 +182,8 @@ def user_input():
                            _input_color, _input_owners, _input_black_lights)
         return _Ford_input
     else:
-        print("Enter different brand")
-        user_input()
+        print("Enter different brand!")
+        return user_input()
 
 
 def print_cars():
@@ -194,81 +194,81 @@ def print_cars():
             _car = user_input()
             _list_cars.append(_car)
         elif _input == "N".upper():
-            break
+            return _list_cars
         else:
-            print("Type something else")
-    print(_list_cars)
+            print("Type something else!")
 
 
-def print_list():
-    num = 1
-    for i in range(0, len(_list)):
-        print("%s)" % num, _list[i])
-        num = num + 1
-        if num <= len(_list):
-            continue
-        else:
-            break
+p = print_cars()
 
 
 def sort_price():
-    for i in range(len(_list) - 1, 0, -1):
-        for j in range(i):
-            if _list[j].price > _list[j + 1].price:
-                a = _list[j]
-                _list[j] = _list[j + 1]
-                _list[j + 1] = a
-    print_list()
-
-
-def sort_year():
-    for i in range(len(_list) - 1, 0, -1):
-        for j in range(i):
-            if _list[j].year.year > _list[j + 1].year.year:
-                a = _list[j]
-                _list[j] = _list[j + 1]
-                _list[j + 1] = a
-    print_list()
+    n = len(p)
+    for i in range(0, n - 1):
+        for j in range(0, n - i - 1):
+            if p[j].price > p[j + 1].price:
+                a = p[j]
+                p[j] = p[j + 1]
+                p[j + 1] = a
+    num = 1
+    for car in p:
+        print("%s) " % num, car)
+        num += 1
+    return p
 
 
 def sort_mileage():
-    for i in range(len(_list) - 1, 0, -1):
-        for j in range(i):
-            if _list[j].mileage > _list[j + 1].mileage:
-                a = _list[j]
-                _list[j] = _list[j + 1]
-                _list[j + 1] = a
-    print_list()
+    n = len(p)
+    for i in range(0, n - 1):
+        for j in range(0, n - i - 1):
+            if p[j].mileage > p[j + 1].mileage:
+                a = p[j]
+                p[j] = p[j + 1]
+                p[j + 1] = a
+    num = 1
+    for car in p:
+        print("%s) " % num, car)
+        num += 1
+    return p
 
 
-def sort_color():
-    for i in range(len(_list) - 1, 0, -1):
-        for j in range(i):
-            if _list[j].color.seq > _list[j + 1].color.seq:
-                a = _list[j]
-                _list[j] = _list[j + 1]
-                _list[j + 1] = a
-    print_list()
+def sort_year():
+    n = len(p)
+    for i in range(0, n - 1):
+        for j in range(0, n - i - 1):
+            if p[j].year > p[j + 1].year:
+                a = p[j]
+                p[j] = p[j + 1]
+                p[j + 1] = a
+    num = 1
+    for car in p:
+        print("%s) " % num, car)
+        num += 1
+    return p
 
 
-def sort_title():
-    for i in range(len(_list) - 1, 0, -1):
-        for j in range(i):
-            if _list[j].title.seq > _list[j + 1].title.seq:
-                a = _list[j]
-                _list[j] = _list[j + 1]
-                _list[j + 1] = a
-    print_list()
+def user_request():
+    while True:
+        _request = input("Enter request letter - A/sort by price, B/sort by mileage, C/sort by year, D/export to .txt, "
+                         "E/end program: ").upper()
+        if _request == "a".upper():
+            sort_price()
+        elif _request == "b".upper():
+            sort_mileage()
+        elif _request == "c".upper():
+            sort_year()
+        elif _request == "d".upper():
+            file = open("Demo.txt", "w")
+            file.write("My demo works!")
+            file.close()
+        elif _request == "e".upper():
+            break
+        else:
+            print("Type letter of request!")
+            return user_request()
 
 
-def sort_distance():
-    for i in range(len(_list) - 1, 0, -1):
-        for j in range(i):
-            if _list[j].distance > _list[j + 1].distance:
-                a = _list[j]
-                _list[j] = _list[j + 1]
-                _list[j + 1] = a
-    print_list()
+user_request()
 
 
-print_cars()
+
