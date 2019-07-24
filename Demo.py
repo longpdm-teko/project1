@@ -1,4 +1,5 @@
 import datetime
+import xlsxwriter
 
 now = datetime.datetime.now()
 print("Welcome to car sorting program!")
@@ -54,6 +55,9 @@ class Toyota(Car):
         super(Toyota, self).__init__(model, year, mileage, title, price, distance, color, owners)
         self.hot_chairs = hot_chairs
 
+    def get_hot_chairs(self):
+        return self.hot_chairs
+
     def get_start_time(self):
         return "Toyota car starts in 3 seconds"
 
@@ -77,6 +81,9 @@ class Ford(Car):
     def __init__(self, model, year, mileage, title, price, distance, color, owners, black_lights):
         super(Ford, self).__init__(model, year, mileage, title, price, distance, color, owners)
         self.black_lights = black_lights
+
+    def get_black_lights(self):
+        return self.black_lights
 
     def get_start_time(self):
         return "Ford car starts in 2 seconds"
@@ -172,8 +179,52 @@ def export(list_car, key):
     while True:
         _export = input("Do you want to export this sorting to another file? Y/N: ").upper()
         if _export == "Y".upper():
+            s = sort(list_car, key)
             file = open(input("Enter file name: "), "w")
-            file.write(str(sort(list_car, key)))
+            workbook = xlsxwriter.Workbook(file.name)
+            worksheet = workbook.add_worksheet()
+            bold = workbook.add_format({'bold': 1})
+
+            worksheet.write('A1', 'No.', bold)
+            worksheet.write('B1', 'Model', bold)
+            worksheet.write('C1', 'Year', bold)
+            worksheet.write('D1', 'Mileage', bold)
+            worksheet.write('E1', 'Title', bold)
+            worksheet.write('F1', 'Price', bold)
+            worksheet.write('G1', 'Distance from home', bold)
+            worksheet.write('H1', 'Color', bold)
+            worksheet.write('I1', 'Ownership', bold)
+            worksheet.write('J1', 'Hot chairs/ Black lights', bold)
+            worksheet.write('K1', 'Start time', bold)
+            worksheet.write('L1', 'Depreciation rate', bold)
+
+            row = 1
+            col = 0
+            num = 1
+
+            for car in s:
+                model = car.get_model()
+                year = car.get_year()
+                mileage = car.get_mileage()
+                title = car.get_title()
+                price = car.get_price()
+                distance = car.get_distance()
+                color = car.get_color()
+                ownership = car.get_ownership()
+
+                worksheet.write(row, col, num)
+                worksheet.write(row, col + 1, model)
+                worksheet.write(row, col + 2, year)
+                worksheet.write(row, col + 3, mileage)
+                worksheet.write(row, col + 4, title)
+                worksheet.write(row, col + 5, price)
+                worksheet.write(row, col + 6, distance)
+                worksheet.write(row, col + 7, color)
+                worksheet.write(row, col + 8, ownership)
+                row += 1
+                num += 1
+
+            workbook.close()
             file.close()
             print("%s exported successful!" % file.name)
             break
@@ -198,8 +249,3 @@ if __name__ == '__main__':
         else:
             print("Enter request!")
             TypeError()
-
-
-
-
-
