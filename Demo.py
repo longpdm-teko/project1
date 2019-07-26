@@ -177,28 +177,29 @@ def sort(list_car, key):
 
 def export(list_car, key):
     while True:
-        _export = input("Do you want to export this sorting to another file? Y/N: ").upper()
+        _export = input("Do you want to export this sorting to an excel file? Y/N: ").upper()
         if _export == "Y".upper():
             s = sort(list_car, key)
-            file = open(input("Enter file name: "), "w")
+            file = open(input("Enter excel file name.xls: "), "w")
             workbook = xlsxwriter.Workbook(file.name)
             worksheet = workbook.add_worksheet()
             bold = workbook.add_format({'bold': 1})
+            italic = workbook.add_format({'italic': 1})
+            money_format = workbook.add_format({'num_format': '$#,##0'})
+            distance_format = workbook.add_format({'num_format': '# miles'})
 
-            worksheet.write('A1', 'No.', bold)
-            worksheet.write('B1', 'Model', bold)
-            worksheet.write('C1', 'Year', bold)
-            worksheet.write('D1', 'Mileage', bold)
-            worksheet.write('E1', 'Title', bold)
-            worksheet.write('F1', 'Price', bold)
-            worksheet.write('G1', 'Distance from home', bold)
-            worksheet.write('H1', 'Color', bold)
-            worksheet.write('I1', 'Ownership', bold)
-            worksheet.write('J1', 'Hot chairs/ Black lights', bold)
-            worksheet.write('K1', 'Start time', bold)
-            worksheet.write('L1', 'Depreciation rate', bold)
+            worksheet.write('A1', 'Sort cars by %s' % key, italic)
+            worksheet.write('A2', 'Rank no.', bold)
+            worksheet.write('B2', 'Model', bold)
+            worksheet.write('C2', 'Year', bold)
+            worksheet.write('D2', 'Mileage', bold)
+            worksheet.write('E2', 'Title', bold)
+            worksheet.write('F2', 'Price', bold)
+            worksheet.write('G2', 'Distance from home', bold)
+            worksheet.write('H2', 'Color', bold)
+            worksheet.write('I2', 'Ownership', bold)
 
-            row = 1
+            row = 2
             col = 0
             num = 1
 
@@ -212,13 +213,13 @@ def export(list_car, key):
                 color = car.get_color()
                 ownership = car.get_ownership()
 
-                worksheet.write(row, col, num)
+                worksheet.write(row, col, "%s)" % num)
                 worksheet.write(row, col + 1, model)
                 worksheet.write(row, col + 2, year)
-                worksheet.write(row, col + 3, mileage)
+                worksheet.write(row, col + 3, mileage, distance_format)
                 worksheet.write(row, col + 4, title)
-                worksheet.write(row, col + 5, price)
-                worksheet.write(row, col + 6, distance)
+                worksheet.write(row, col + 5, price, money_format)
+                worksheet.write(row, col + 6, distance, distance_format)
                 worksheet.write(row, col + 7, color)
                 worksheet.write(row, col + 8, ownership)
                 row += 1
@@ -235,17 +236,27 @@ def export(list_car, key):
             TypeError()
 
 
+def perform(list_car, key):
+    sort(list_car, key)
+    list_cars(list_car)
+    export(list_car, key)
+
+
 if __name__ == '__main__':
     p = print_cars()
     while True:
-        _key = input("Enter price, mileage, or year to sort/ end to stop program: ")
-        if _key == "price" or _key == "mileage" or _key == "year":
-            sort(p, _key)
-            list_cars(p)
-            export(p, _key)
-        elif _key == "end":
+        _input = input("Enter request number: 0/end program, 1/sort by price, 2/sort by mileage, or 3/sort by year: ")
+        keys = {
+            "1": "price",
+            "2": "mileage",
+            "3": "year",
+        }
+        if _input == "0":
             print("Thanks for using this program!")
             break
+        elif keys.get(_input):
+            _key = keys.get(_input)
+            perform(p, _key)
         else:
-            print("Enter request!")
+            print("Enter request number!")
             TypeError()
